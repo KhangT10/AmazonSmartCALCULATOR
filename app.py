@@ -164,18 +164,108 @@ def bulk_purchase_calculator():
         print("Please enter a quantity greater than zero")
 
 
-# Main Menu
+# Function for Product Comparison
+
+def compare_products():
+
+    print()
+    print("Product Comparison")
+
+    # First Product Information
+
+    Product1_Name = input("Enter First Product Name ")
+    selling_price1 = float(input("Enter First Product Selling Price "))
+    product_cost1 = float(input("Enter First Product Cost "))
+    referral_percent1 = float(input("Enter First Product Referral Fee Percentage "))
+    fba_fee1 = float(input("Enter First Product FBA Fee "))
+    shipping_cost1 = float(input("Enter First Product Shipping Cost "))
+    prep_cost1 = float(input("Enter First Product Prep Cost "))
+
+    # Calculate First Product Profit
+
+    referral_fee1 = (selling_price1 * referral_percent1) / 100
+
+    total_expenses1 = (
+        product_cost1 + referral_fee1 + fba_fee1
+        + shipping_cost1 + prep_cost1
+    )
+
+    profit1 = selling_price1 - total_expenses1
+
+    investment1 = product_cost1 + shipping_cost1 + prep_cost1
+
+    if investment1 > 0:
+        roi1 = (profit1 / investment1) * 100
+    else:
+        roi1 = 0
+
+    # Second Product Information
+
+    Product2_Name = input("Enter Second Product Name ")
+    selling_price2 = float(input("Enter Second Product Selling Price "))
+    product_cost2 = float(input("Enter Second Product Cost "))
+    referral_percent2 = float(input("Enter Second Product Referral Fee Percentage "))
+    fba_fee2 = float(input("Enter Second Product FBA Fee "))
+    shipping_cost2 = float(input("Enter Second Product Shipping Cost "))
+    prep_cost2 = float(input("Enter Second Product Prep Cost "))
+
+    # Calculate Second Product Profit
+
+    referral_fee2 = (selling_price2 * referral_percent2) / 100
+
+    total_expenses2 = (
+        product_cost2 + referral_fee2 + fba_fee2
+        + shipping_cost2 + prep_cost2
+    )
+
+    profit2 = selling_price2 - total_expenses2
+
+    investment2 = product_cost2 + shipping_cost2 + prep_cost2
+
+    if investment2 > 0:
+        roi2 = (profit2 / investment2) * 100
+    else:
+        roi2 = 0
+
+    # Display Comparison Results
+
+    print()
+    print("Product Comparison Results")
+
+    print(Product1_Name, "Profit: $", round(profit1, 2))
+    print(Product1_Name, "ROI: ", round(roi1, 2), "%")
+
+    print(Product2_Name, "Profit: $", round(profit2, 2))
+    print(Product2_Name, "ROI: ", round(roi2, 2), "%")
+
+    # Compare Products
+
+    if profit1 > profit2:
+        print(Product1_Name, "has higher profit")
+
+    elif profit2 > profit1:
+        print(Product2_Name, "has higher profit")
+
+    else:
+        print("Both products have equal profit")
+
+
+
+
+#Main Menu
 
 def main_menu():
 
     choice = ""
 
-    while choice != "3":
+    while choice != "4":
+
         print()
         print("Amazon Smart Calculator")
         print("1. Single Product Calculator")
         print("2. Bulk Purchase Calculator")
-        print("3. Exit")
+        print("3. Product Comparison")
+        print("4. Exit")
 
         choice = input("Select an Option ")
 
@@ -186,11 +276,13 @@ def main_menu():
             bulk_purchase_calculator()
 
         elif choice == "3":
+            compare_products()
+
+        elif choice == "4":
             print("Thank you for using Amazon Smart Calculator")
 
         else:
             print("Invalid Option. Please Try Again")
-
 
 #Start Program
 
